@@ -1,0 +1,64 @@
+﻿@using HI.DevOps.Web.Common.Helper.Bundle
+@using HI.DevOps.Web.Common.Helper.StaticFileService
+@using Microsoft.AspNetCore.Hosting
+@inject IWebHostEnvironment HostingEnvironment
+@inject IStaticFileCacheService StaticFileCacheTagHelper
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/bundle/css/globle.min.css" />
+    <link rel="stylesheet" href="~/bundle/css/dashboard.min.css" />
+    <link rel="stylesheet" href="~/bundle/css/calendar.min.css" />
+    <link rel="stylesheet" href="~/bundle/css/flatpickr.min.css" />
+    <link rel="stylesheet" href="~/bundle/css/forms.min.css" />
+    <style>
+        .widget {
+            margin-bottom: 10px;
+        }
+
+        .widget-content-area {
+            border-radius: 6px;
+        }
+
+        .daterangepicker.dropdown-menu {
+            z-index: 1059;
+        }
+    </style>
+</head>
+<body class="body" style="background: #f1f2f3">
+@RenderBody()
+
+    <environment include="Development">
+        @Bundler.Unpack(HostingEnvironment.ContentRootPath, "bundle/js/jquery.min.js")
+        @Bundler.Unpack(HostingEnvironment.ContentRootPath, "bundle/js/global.min.js")
+        <script src=@StaticFileCacheTagHelper.GetFilePath("plugins/table/datatable/datatables.js")></script>
+        @Bundler.Unpack(HostingEnvironment.ContentRootPath, "bundle/js/script.min.js")
+        @Bundler.Unpack(HostingEnvironment.ContentRootPath, "bundle/js/dashboard.min.js")
+
+    </environment>
+    <environment include="Production">
+        <script src=@StaticFileCacheTagHelper.GetFilePath("bundle/js/jquery.min.js")></script>
+        <script src=@StaticFileCacheTagHelper.GetFilePath("bundle/js/global.min.js")></script>
+        <script src=@StaticFileCacheTagHelper.GetFilePath("plugins/table/datatable/datatables.js")></script>
+        <script src=@StaticFileCacheTagHelper.GetFilePath("Scripts/site.js")></script>
+        <script src=@StaticFileCacheTagHelper.GetFilePath("bundle/js/script.min.js")></script>
+        <script src=@StaticFileCacheTagHelper.GetFilePath("bundle/js/dashboard.min.js")></script>
+
+    </environment>
+<script>
+        $(document).ready(function () {
+            App.init();
+        });
+    </script>
+
+
+<!-- END GLOBAL MANDATORY SCRIPTS -->
+</body>
+</html>

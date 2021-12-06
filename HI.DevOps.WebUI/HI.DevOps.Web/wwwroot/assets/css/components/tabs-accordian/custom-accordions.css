@@ -1,0 +1,133 @@
+/*
+	===============================
+			@Import	Function
+	===============================
+*/
+/*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+h1, h2, h3, h4, h5, h6 { color: #3b3f5c; }
+
+/*
+    Basic
+*/
+
+.card {
+    border: 2px solid #e0e6ed;
+    border-radius: 6px;
+    margin-bottom: 4px;
+}
+
+.card-header {
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 4px;
+    color: #f8538d;
+    padding: 0;
+    position: relative;
+}
+
+.card-header section > div {
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 13px 19px;
+}
+
+.card-header section > div.collapsed { color: #888ea8; }
+
+.card-header section > div:not(.collapsed) {
+    border-bottom: 2px solid #e0e6ed;
+    color: #1b55e2;
+    font-weight: 600;
+}
+
+.card-header section > div .icons {
+    bottom: 0;
+    padding: 9px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.card-header section > div .icons svg { width: 18px; }
+
+.card .card-body p {
+    color: #888ea8;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.card .card-body p:not(:last-child) { margin-bottom: 10px; }
+
+.card .card-body ul { margin-bottom: 0; }
+
+.card .card-body ul li {
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.card .card-body ul li:not(:last-child) { margin-bottom: 5px; }
+
+.card .card-body ul li a {
+    color: #3b3f5c;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.card .card-body ul li a:hover { color: #1b55e2; }
+
+/*
+    No Outer Spacing
+*/
+
+.no-outer-spacing {
+    border: 2px solid #e0e6ed;
+    border-radius: 6px;
+}
+
+.no-outer-spacing .card {
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.no-outer-spacing .card:first-child {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.no-outer-spacing .card:last-child {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.no-outer-spacing .card:not(:last-child) { border-bottom: 2px solid #e0e6ed; }
+
+.no-outer-spacing .card-header section > div:not(.collapsed) { border-bottom: none; }
+
+/*
+    Accordin with Icons
+*/
+
+.accordion-icons .accordion-icon {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.accordion-icons .accordion-icon svg {
+    color: #888ea8;
+    fill: rgba(0, 23, 55, 0.08);
+    height: 20px;
+    margin-right: 6px;
+    vertical-align: middle;
+    width: 20px;
+}
+
+.accordion-icons div:not(.collapsed) .accordion-icon svg {
+    color: #1b55e2;
+    fill: rgba(27, 85, 226, 0.239216);
+}

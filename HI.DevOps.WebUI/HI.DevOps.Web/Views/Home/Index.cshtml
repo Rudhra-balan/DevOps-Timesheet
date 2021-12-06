@@ -1,0 +1,163 @@
+﻿@using HI.DevOps.Web.Common.Helper.Bundle
+@using HI.DevOps.Web.Common.Helper.StaticFileService
+@using Microsoft.AspNetCore.Hosting
+@inject IStaticFileCacheService StaticFileCacheTagHelper
+@inject IWebHostEnvironment HostingEnvironment
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="bundle/js/jquery.min.js"></script>
+<script src="scripts/home/home.js"></script>
+@Bundler.Unpack(HostingEnvironment.ContentRootPath, "bundle/js/calendar.min.js")
+<script src="scripts/timesheet/timesheet.js"></script>
+@Bundler.Unpack(HostingEnvironment.ContentRootPath, "bundle/js/export.min.js")
+
+<script type="text/javascript">
+    $(function () {
+        onHomePageLoad();
+    });
+</script>
+
+<span class="AntiForge"> @Html.AntiForgeryToken() </span>
+<!--  BEGIN NAVBAR  -->
+<div class="header-container">
+    <header class="header navbar navbar-expand-sm">
+
+        <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </a>
+
+        <div class="nav-logo align-self-center">
+            <a class="navbar-brand" href="javascript:void(0);">
+                <img alt="logo" src="Image/azure_Logo.png" style="height: 50px; width: 100px;"> <span class="navbar-brand-name">azure TimeSheet Management</span>
+            </a>
+        </div>
+
+        <ul class="navbar-item flex-row mr-auto">
+            <li class="nav-item align-self-center search-animated"></li>
+        </ul>
+
+        <ul class="navbar-item flex-row nav-dropdowns">
+
+            <li class="nav-item dropdown user-profile-dropdown order-lg-0 order-1">
+                <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="user-profile-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="media">
+                        @*<img src="Image/User.jpg" class="img-fluid" alt="admin-profile">*@
+                        <div class="media-body align-self-center">
+                            <h6>
+                                <span>Hi,</span> @(User.Identity.Name)
+                            </h6>
+                        </div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </a>
+                <div class="dropdown-menu position-absolute animated fadeInUp" aria-labelledby="user-profile-dropdown">
+                    <div class="dropdown-item">
+                        <a class="" href="javascript:void(0);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg> Sign Out
+                        </a>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+    </header>
+</div>
+<!--  END NAVBAR  -->
+<!--  END NAVBAR  -->
+<!--  BEGIN MAIN CONTAINER  -->
+<div class="main-container" id="container">
+    <div class="overlay"></div>
+    <div class="search-overlay"></div>
+    <!--  BEGIN TOPBAR  -->
+    <div class="topbar-nav header navbar" role="banner">
+        <nav id="topbar">
+            <ul class="navbar-nav theme-brand flex-row  text-center">
+                <li class="nav-item theme-logo">
+                    <a href="javascript:void(0);">
+                        <img src="Image/azure_Logo.png" alt="logo">
+                    </a>
+                </li>
+                <li class="nav-item theme-text">
+                    <a href="javascript:void(0);" class="nav-link">azure TimeSheet Management </a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled menu-categories" id="topAccordion">
+
+                <li class="menu" id="timeSheetMenuLink">
+                    <a href="javascript:void(0);" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown" style="">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>TimeSheet</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+
+                </li>
+
+                <li class="menu" id="timeSheetExportLink">
+                    <a href="javascript:void(0);" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle autodroprown" style="">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg> <span>Export</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+    <!--  END TOPBAR  -->
+    <!--  BEGIN CONTENT AREA  -->
+    <div id="content" class="main-content">
+        <br />
+        <div class="alert alert-messages-container" id="alert-messages-container" name="alert-messages-container" style="display: none">
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+        <div class="layout-px-spacing" id="PartialArea">
+
+        </div>
+
+    </div>
+    <div class="footer-wrapper">
+        <div class="footer-section f-section-1">
+            <p class="">Copyright © 2020 <a target="_blank" href="https://www.azure.com/">azure</a>, All rights reserved.</p>
+        </div>
+    </div>
+</div>
+<div id="waiting-popup" class="waiting-popup">
+    <div id="waiting-popup-panel" class="waiting-popup-panel">
+    </div>
+    <img id="image_loading" alt="" src="~/Image/loader.svg" class="progress" />
+</div>
+
+<!-- END MAIN CONTAINER -->
+<!-- START GLOBAL MANDATORY SCRIPTS -->

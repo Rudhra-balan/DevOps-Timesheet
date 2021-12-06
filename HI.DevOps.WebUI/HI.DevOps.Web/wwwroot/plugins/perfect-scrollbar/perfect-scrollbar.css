@@ -1,0 +1,110 @@
+/*
+	===============================
+			@Import	Function
+	===============================
+*/
+/*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+/*
+ * Container style
+ */
+.ps {
+    -ms-overflow-style: none;
+    -ms-touch-action: auto;
+    overflow: hidden !important;
+    overflow-anchor: none;
+    touch-action: auto;
+}
+
+/*
+ * Scrollbar rail styles
+ */
+
+.ps__rail-x {
+    -webkit-transition: background-color .2s linear, opacity .2s linear;
+    /* there must be 'bottom' or 'top' for ps__rail-x */
+    bottom: 0px;
+    display: none;
+    height: 10px;
+    opacity: 0;
+    /* please don't change 'position' */
+    position: absolute;
+    transition: background-color .2s linear, opacity .2s linear;
+}
+
+.ps__rail-y {
+    -webkit-transition: background-color .2s linear, opacity .2s linear;
+    display: none;
+    opacity: 0;
+    /* please don't change 'position' */
+    position: absolute;
+    /* there must be 'right' or 'left' for ps__rail-y */
+    right: 0;
+    transition: background-color .2s linear, opacity .2s linear;
+    width: 10px;
+}
+
+.ps--active-x > .ps__rail-x, .ps--active-y > .ps__rail-y {
+    background-color: transparent;
+    display: block;
+}
+
+.ps:hover > .ps__rail-x, .ps:hover > .ps__rail-y { opacity: 0.6; }
+
+.ps--focus > .ps__rail-x, .ps--focus > .ps__rail-y { opacity: 0.6; }
+
+.ps--scrolling-x > .ps__rail-x, .ps--scrolling-y > .ps__rail-y { opacity: 0.6; }
+
+.ps .ps__rail-x:hover, .ps .ps__rail-y:hover, .ps .ps__rail-x:focus, .ps .ps__rail-y:focus, .ps .ps__rail-x.ps--clicking, .ps .ps__rail-y.ps--clicking {
+    background-color: #eee;
+    opacity: 0.9;
+}
+
+/*
+ * Scrollbar thumb styles
+ */
+
+.ps__thumb-x {
+    -webkit-transition: background-color .2s linear, height .2s ease-in-out;
+    background-color: #d3d3d3;
+    border-radius: 6px;
+    /* there must be 'bottom' for ps__thumb-x */
+    bottom: 2px;
+    height: 4px;
+    /* please don't change 'position' */
+    position: absolute;
+    transition: background-color .2s linear, height .2s ease-in-out;
+}
+
+.ps__thumb-y {
+    -webkit-transition: background-color .2s linear, width .2s ease-in-out;
+    background-color: #d3d3d3;
+    border-radius: 6px;
+    /* please don't change 'position' */
+    position: absolute;
+    /* there must be 'right' for ps__thumb-y */
+    right: 2px;
+    transition: background-color .2s linear, width .2s ease-in-out;
+    width: 4px;
+}
+
+.ps__rail-x:hover > .ps__thumb-x, .ps__rail-x:focus > .ps__thumb-x, .ps__rail-x.ps--clicking .ps__thumb-x {
+    background-color: #acb0c3;
+    height: 6px;
+}
+
+.ps__rail-y:hover > .ps__thumb-y, .ps__rail-y:focus > .ps__thumb-y, .ps__rail-y.ps--clicking .ps__thumb-y {
+    background-color: #acb0c3;
+    width: 6px;
+}
+
+/* MS supports */
+
+@supports (-ms-overflow-style: none) { .ps { overflow: auto !important; } }
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .ps { overflow: auto !important; }
+}

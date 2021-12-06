@@ -1,0 +1,48 @@
+.element-background {
+    border: 1px solid #bfc9d4;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.font-family-showcase {
+    background: #fff;
+    border: 1px solid #e0e6ed;
+    border-radius: 6px;
+    margin: 0 auto;
+    width: 18rem;
+}
+
+.font-family-showcase .font-family-text {
+    border-bottom: 1px solid #e0e6ed;
+    padding: 20px;
+}
+
+.font-family-showcase .font-family-text p {
+    font-size: 40px;
+    margin-bottom: 0;
+}
+
+.font-family-showcase .font-family-info {
+    background-color: #ebedf2;
+    padding: 20px;
+}
+
+.font-family-showcase .font-family-info h5 {
+    font-size: 17px;
+    margin-bottom: 0;
+}
+
+.font-family-showcase .font-family-info a {
+    color: #1b55e2;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.font-family-showcase .font-family-info .font-family-link {
+    margin-top: 30px;
+    text-align: center;
+}
+
+@media (max-width: 575px) {
+    .font-family-showcase { width: auto; }
+}

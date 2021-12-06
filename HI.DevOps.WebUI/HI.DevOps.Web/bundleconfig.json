@@ -1,0 +1,196 @@
+[
+  {
+    "outputFileName": "wwwroot/bundle/js/calendar.min.js",
+    "inputFiles": [
+      "wwwroot/plugins/fullcalendar/moment.min.js",
+      "wwwroot/plugins/flatpickr/flatpickr.js",
+      "wwwroot/plugins/fullcalendar/fullcalendar.min.js"
+      
+      //"wwwroot/scripts/timesheet/timesheet.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundle/js/export.min.js",
+    "inputFiles": [
+      "wwwroot/scripts/export/export.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundle/js/global.min.js",
+    "inputFiles": [
+      "wwwroot/assets/js/libs/jquery-3.1.1.min.js",
+      "wwwroot/plugins/jquery-ui/jquery-ui.min.js",
+      "wwwroot/plugins/jquery-tabguard/dist/jquery.tabguard1.0.js",
+      "wwwroot/bootstrap/js/popper.min.js",
+      "wwwroot/bootstrap/js/bootstrap.min.js",
+      "wwwroot/plugins/perfect-scrollbar/perfect-scrollbar.min.js",
+      "wwwroot/assets/js/app.js",
+      "wwwroot/assets/js/custom.js",
+      "wwwroot/plugins/blockui/jquery.blockUI.min.js",
+      "wwwroot/plugins/blockui/custom-blockui.js",
+      "wwwroot/scripts/constants/constants.js",
+      "wwwroot/assets/js/scrollspyNav.js",
+      "wwwroot/plugins/notification/snackbar/snackbar.min.js",
+      "wwwroot/plugins/select2/select2.min.js"
+      
+
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundle/js/jquery.min.js",
+    "inputFiles": [
+      "wwwroot/assets/js/libs/jquery-3.1.1.min.js",
+      "wwwroot/assets/js/libs/jquery-ui.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundle/js/authentication.min.js",
+    "inputFiles": [
+      "wwwroot/scripts/authentication/form-1.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundle/js/script.min.js",
+    "inputFiles": [
+      "wwwroot/scripts/site.js",
+      "wwwroot/scripts/utilities.js",
+      "wwwroot/scripts/constants/constants.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundle/js/bootstrap.min.js",
+    "inputFiles": [
+      "wwwroot/bootstrap/js/popper.min.js",
+      "wwwroot/bootstrap//js/bootstrap.min.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundle/css/globle.min.css",
+    "inputFiles": [
+      "wwwroot/bootstrap/css/bootstrap.min.css",
+      "wwwroot/assets/main.css",
+      "wwwroot/plugins/perfect-scrollbar/perfect-scrollbar.css",
+      "wwwroot/assets/structure.css",
+      "wwwroot/plugins/highlight/styles/monokai-sublime.css",
+      "wwwroot/assets/css/authentication/form-1.css",
+      "wwwroot/plugins/loaders/custom-loader.css",
+      "wwwroot/assets/css/components/custom-modal.css",
+      "wwwroot/plugins/animate/animate.css",
+      "wwwroot/assets/css/scrollspyNav.css",
+      "wwwroot/plugins/notification/snackbar/snackbar.min.css",
+      "wwwroot/plugins/select2/select2.min.css",
+      "wwwroot/plugins/table/datatable/datatables.css",
+      "wwwroot/plugins/table/datatable/dt-global_style.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundle/css/dashboard.min.css",
+    "inputFiles": [
+      "wwwroot/plugins/apex/apexcharts.css",
+      "wwwroot/assets/css/dashboard/dash_1.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundle/css/elements.min.css",
+    "inputFiles": [
+      "wwwroot/assets/css/elements/alert.css",
+      "wwwroot/assets/css/elements/avatar.css",
+      "wwwroot/assets/css/elements/breadcrumb.css",
+      "wwwroot/assets/css/elements/color_library.css",
+      "wwwroot/assets/css/elements/custom-pagination.css",
+      "wwwroot/assets/css/elements/custom-tree_view.css",
+      "wwwroot/assets/css/elements/custom-typography.css",
+      "wwwroot/assets/css/elements/infobox.css",
+      "wwwroot/assets/css/elements/miscellaneous.css",
+      "wwwroot/assets/css/elements/popover.css",
+      "wwwroot/assets/css/elements/search.css",
+      "wwwroot/assets/css/elements/tooltip.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundle/css/forms.min.css",
+    "inputFiles": [
+      "wwwroot/assets/css/forms/theme-checkbox-radio.css",
+      "wwwroot/assets/css/forms/switches.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundle/css/calendar.min.css",
+    "inputFiles": [
+      "wwwroot/plugins/fullcalendar/fullcalendar.css",
+      "wwwroot/plugins/fullcalendar/custom-fullcalendar.advance.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/bundle/css/flatpickr.min.css",
+    "inputFiles": [
+      "wwwroot/plugins/flatpickr/flatpickr.css",
+      "wwwroot/plugins/flatpickr/custom-flatpickr.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

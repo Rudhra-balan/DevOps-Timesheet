@@ -1,0 +1,177 @@
+/*
+	===============================
+			@Import	Function
+	===============================
+*/
+/*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+body {
+    margin: 0;
+    max-width: 100%;
+}
+
+/*      Map     */
+
+#basic_map1 {
+    height: 757px;
+    width: 100%;
+}
+
+/*  Contact Section Header     */
+
+.cu-contact-section {
+    background-color: #c2d5ff;
+    padding: 0;
+    position: relative;
+}
+
+.cu-contact-section .cu-section-header {
+    background: #3b3f5c;
+    background-color: rgba(43, 80, 237, 0.109804);
+    color: #fff;
+    padding: 15px 34px;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+.cu-contact-section .cu-section-header h4 {
+    color: #fff;
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+.cu-contact-section .cu-section-header p {
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.cu-contact-section .contact-form {
+    bottom: 0;
+    height: fit-content;
+    height: -moz-max-content;
+    height: -webkit-fit-content;
+    margin-bottom: auto;
+    margin-top: auto;
+    position: absolute;
+    right: 58px;
+    top: 0;
+    z-index: 2;
+}
+
+.cu-contact-section .contact-form form {
+    -moz-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901961), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
+    -webkit-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901961), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901961), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
+    margin-bottom: 24px;
+    margin-top: 24px;
+    padding: 25px 35px;
+}
+
+.cu-contact-section .contact-form form .input-fields { position: relative; }
+
+.cu-contact-section .contact-form form .input-fields svg {
+    color: #1b55e2;
+    left: 25px;
+    position: absolute;
+    top: 11px;
+    width: 20px;
+}
+
+.cu-contact-section .contact-form form .input-fields svg.feather-mail {
+    left: 12px;
+    top: 7px;
+}
+
+.cu-contact-section .contact-form form h4 {
+    color: #3b3f5c;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.cu-contact-section .contact-form form input {
+    background-color: transparent;
+    font-weight: 600;
+    padding: 8px 5px 8px 40px;
+}
+
+.cu-contact-section .contact-form form input::-webkit-input-placeholder, .cu-contact-section .contact-form form input::-ms-input-placeholder, .cu-contact-section .contact-form form input::-moz-placeholder {
+    color: #d3d3d3;
+    font-size: 14px;
+}
+
+.cu-contact-section .contact-form form input:focus {
+    background-color: #ffffff;
+    border-color: #3b3f5c;
+}
+
+.cu-contact-section .n-chk { display: inline-block; }
+
+.cu-contact-section .form-group textarea {
+    background-color: transparent;
+    margin-top: 15px;
+    padding: 8px 5px 8px 43px;
+    resize: none;
+}
+
+.cu-contact-section .form-group textarea::-webkit-input-placeholder, .cu-contact-section .form-group textarea::-ms-input-placeholder, .cu-contact-section .form-group textarea::-moz-placeholder {
+    color: #d3d3d3;
+    font-size: 14px;
+}
+
+.cu-contact-section .form-group textarea:focus {
+    background-color: #ffffff;
+    border-color: #3b3f5c;
+}
+
+.cu-contact-section .form-group textarea:-ms-input-placeholder { color: #7b8489; }
+
+.cu-contact-section form button {
+    border: none;
+    display: block;
+    padding: 15px 25px;
+    width: 100%;
+}
+
+/* 	Contact Content 	*/
+
+@media (max-width: 991px) {
+    .cu-contact-section .cu-section-header { display: none; }
+
+    .cu-contact-section .contact-form {
+        left: 0;
+        margin-bottom: 0;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0;
+        right: 0;
+    }
+
+    .cu-contact-section .contact-form form {
+        border-radius: 0;
+        margin: 0 auto;
+        max-width: 530px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 991px) {
+    body { background: #fff; }
+
+    #basic_map1 { display: none; }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .cu-contact-section .contact-form form {
+        min-width: 530px;
+        width: 100%;
+    }
+}

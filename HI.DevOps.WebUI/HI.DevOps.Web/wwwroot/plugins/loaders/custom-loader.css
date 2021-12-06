@@ -1,0 +1,153 @@
+/*
+	===============================
+			@Import	Function
+	===============================
+*/
+/*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+.loader {
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
+    animation: spin 2s linear infinite;
+    border: 7px solid #f1f2f3;
+    border-radius: 50%;
+    border-top: 7px solid #1b55e2;
+    height: 58px;
+    width: 58px;
+}
+
+.loader.dual-loader { border-bottom: 7px solid #1b55e2; }
+
+.loader.multi-loader {
+    border-bottom: 7px solid #e2a03f;
+    border-left: 7px solid #e7515a;
+    border-right: 7px solid #8dbf42;
+}
+
+/* Safari */
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+
+    100% { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spinner-border {
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinner-border {
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.spinner-border {
+    -webkit-animation-duration: .75s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: spinner-border;
+    -webkit-animation-timing-function: linear;
+    animation-duration: .75s;
+    animation-iteration-count: infinite;
+    animation-name: spinner-border;
+    animation-timing-function: linear;
+    border: .25em solid;
+    border-color: currentColor transparent currentColor currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    height: 2rem;
+    overflow: hidden;
+    position: relative;
+    text-indent: -999em;
+    width: 2rem;
+}
+
+.spinner-border-reverse { border-color: transparent currentColor transparent transparent; }
+
+.spinner-border-reverse::after {
+    border: 0.25em solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    bottom: -.25em;
+    content: "";
+    display: inline-block;
+    left: -.25em;
+    position: absolute;
+    right: -.25em;
+    top: -.25em;
+}
+
+@-webkit-keyframes spinner-grow {
+    0% {
+        -webkit-transform: scale(0);
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    50% { opacity: 1; }
+
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+@keyframes spinner-grow {
+    0% {
+        -webkit-transform: scale(0);
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    50% { opacity: 1; }
+
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+.spinner-grow {
+    -webkit-animation-duration: .75s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: spinner-grow;
+    -webkit-animation-timing-function: linear;
+    animation-duration: .75s;
+    animation-iteration-count: infinite;
+    animation-name: spinner-grow;
+    animation-timing-function: linear;
+    background-color: currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    height: 2rem;
+    overflow: hidden;
+    position: relative;
+    text-indent: -999em;
+    width: 2rem;
+}
+
+.loader-lg {
+    border-width: 0.35em;
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.loader-sm {
+    border-width: 0.15em;
+    height: 1.5rem;
+    width: 1.5rem;
+}

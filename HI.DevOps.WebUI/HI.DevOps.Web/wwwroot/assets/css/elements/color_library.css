@@ -1,0 +1,52 @@
+.widget {
+    border: none;
+    box-shadow: none;
+}
+
+/*---------Palette Box--------*/
+
+.color-box {
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.05);
+    align-items: center;
+    background: white;
+    border: 1px solid #e0e6ed;
+    border-radius: 6px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.05);
+    display: flex;
+    padding: 10px;
+}
+
+.color-box .cl-example {
+    -webkit-transition: all 0.35s ease;
+    border-bottom-right-radius: 0;
+    border-radius: 6px;
+    border-top-right-radius: 0;
+    height: 80px;
+    margin-bottom: -10px;
+    margin-left: -10px;
+    margin-right: 20px;
+    margin-top: -10px;
+    transition: all 0.35s ease;
+    width: 80px;
+}
+
+.color-box:hover .cl-example {
+    -webkit-transform: scale(1.09);
+    transform: scale(1.09);
+}
+
+.color-box .cl-info { flex: 1; }
+
+.color-box .cl-title {
+    color: #3b3f5c;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.color-box .cl-info span {
+    color: #888ea8;
+    font-size: 14px;
+    font-weight: 600;
+}

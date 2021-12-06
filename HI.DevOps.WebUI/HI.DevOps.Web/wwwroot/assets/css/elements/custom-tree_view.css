@@ -1,0 +1,148 @@
+/*
+	===============================
+			@Import	Function
+	===============================
+*/
+/*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+/*  Tree View   */
+#myUL {
+    color: #3b3f5c;
+    font-weight: 600;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#myUL ul { list-style-type: none; }
+
+.caret {
+    /* Safari 3.1+ */
+    -moz-user-select: none;
+    /* Firefox 2+ */
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    color: #0e1726;
+    cursor: pointer;
+    font-size: 13px;
+    text-transform: capitalize;
+    /* IE 10+ */
+    user-select: none;
+}
+
+.caret.caret-down::before { content: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="%232b50ed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder-plus"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path><line x1="12" y1="11" x2="12" y2="17"></line><line x1="9" y1="14" x2="15" y2="14"></line></svg>'); }
+
+.caret::before {
+    color: #888ea8;
+    content: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="%232b50ed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder-minus"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path><line x1="9" y1="14" x2="15" y2="14"></line></svg>');
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: sub;
+}
+
+.nested {
+    display: none;
+    padding-left: 28px;
+}
+
+.nested li {
+    color: #5c1ac3;
+    font-size: 13px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.active { display: block; }
+
+.file-tree {
+    list-style: none;
+    margin-bottom: 0;
+    overflow: hidden;
+    padding-left: 20px;
+}
+
+.file-tree * { list-style-type: none; }
+
+.file-tree ul {
+    display: none;
+    list-style: none;
+    padding-left: 30px;
+}
+
+.file-tree li {
+    border-radius: 0.25rem;
+    color: #0e1726;
+    cursor: auto;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 5px 0;
+    position: relative;
+    white-space: nowrap;
+}
+
+.file-tree .file-tree-folder {
+    -moz-transition: all 0.2s;
+    -moz-transition-delay: 0s;
+    -webkit-transition: all 0.2s;
+    -webkit-transition-delay: 0s;
+    cursor: pointer;
+    transition: all 0.2s;
+    transition-delay: 0s;
+}
+
+.file-tree .file-tree-folder::before {
+    content: "\e9b9";
+    font-size: 1.25rem;
+}
+
+.file-tree .file-tree-folder::after {
+    -moz-transition: all 0.2s;
+    -moz-transition-delay: 0s;
+    -webkit-transition: all 0.2s;
+    -webkit-transition-delay: 0s;
+    color: #2196f3;
+    content: "\f182";
+    content: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="%232b50ed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+    display: block;
+    font-family: 'flaticon' !important;
+    font-size: 10px;
+    left: -2em;
+    position: absolute;
+    text-align: center;
+    top: .4rem;
+    transition: all 0.2s;
+    transition-delay: 0s;
+}
+
+.file-tree .file-tree-folder.open::after {
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.file-tree li.file-tree-folder::before {
+    color: #2196f3;
+    content: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="%232b50ed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>');
+    display: inline-block;
+    font-size: 1rem;
+    margin-right: .25rem;
+    text-align: center;
+    vertical-align: middle;
+    width: 30px;
+}
+
+.file-tree li::before {
+    color: #2196f3;
+    content: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="%232b50ed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>');
+    font-size: 1rem;
+    margin-right: 9px;
+    position: relative;
+    top: 2px;
+}
+
+@media (max-width: 767px) {
+    .custo-radio { margin-top: 5px; }
+}

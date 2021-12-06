@@ -1,0 +1,345 @@
+﻿@using HI.DevOps.DomainCore.Helper.Constant
+@using HI.DevOps.Web.Common.Helper.Builder
+@using HI.DevOps.Web.Common.Helper.Bundle
+@using HI.DevOps.Web.Common.Helper.StaticFileService
+@using Microsoft.AspNetCore.Hosting
+@model HI.DevOps.DomainCore.Models.TimeSheet.TimeSheetViewModel
+@inject IStaticFileCacheService StaticFileCacheTagHelper
+@inject IWebHostEnvironment HostingEnvironment
+
+<environment include="Development">
+    @Bundler.Unpack(HostingEnvironment.ContentRootPath, "bundle/js/calendar.min.js")
+
+</environment>
+<environment include="Production">
+    <script src=@StaticFileCacheTagHelper.GetFilePath("bundle/js/calendar.min.js")></script>
+</environment>
+
+<script type="text/javascript">
+    var calendarEventData;
+     timeSheetData(@Html.Raw(ViewBag.CalendarEvent));
+    $(function () {
+        onTimeSheetPageLoad();
+    });
+
+</script>
+@{
+    var timeSheet = Model;
+    if (timeSheet == null)
+    {
+        throw new ArgumentNullException(nameof(timeSheet));
+    }
+
+
+    <div class="row" style="margin-top: 12px;">
+        <div class="col-lg-12 col-12 layout-spacing">
+            <div class="statbox widget box">
+
+                <div class="widget-content widget-content-area">
+                    <ul class="nav nav-pills mb-3 mt-3" id="justify-right-pills-tab" role="tablist">
+                        <li class="nav-item" onclick="renderCalenderOnTabClick()">
+                            <a class="nav-link active" id="justify-right-pills-home-tab" data-toggle="pill" href="#justify-right-pills-home" role="tab" aria-controls="justify-right-pills-home" aria-selected="true">Month</a>
+                        </li>
+                        <li class="nav-item" onclick="renderWeekListOnTabClick();">
+                            <a class="nav-link" id="justify-right-pills-profile-tab" data-toggle="pill" href="#justify-right-pills-profile" role="tab" aria-controls="justify-right-pills-profile" aria-selected="false">Week</a>
+                        </li>
+
+                    </ul>
+
+                    <div class="tab-content" id="justify-right-pills-tabContent">
+                    
+                    <div class="tab-pane fade show active" id="justify-right-pills-home" role="tabpanel" aria-labelledby="justify-right-pills-home-tab">
+                            <div class="row layout-top-spacing" id="cancel-row">
+
+                                <div class="col-xl-12 col-lg-1 col-md-1">
+                                    <div class="">
+                                        <div class="widget-content widget-content-area">
+                                            <div class="calendar-upper-section">
+                                                <div class="row">
+                                                    <div class="col-md-12 col-12">
+                                                        <form action="javascript:void(0);" class="form-horizontal mt-md-0 mt-3 text-md-right text-center">
+                                                            <button id="OpenForm" style="margin-top: -150px;" class="btn btn-primary">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather mr-2">
+                                                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                                                </svg> Add TimeSheet
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="calendar" style="margin-top: -80px;"></div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="feedback-form" class="feedback-form">
+
+                                    <div id="feedback_form_area" class="feedback_form_area row">
+                                        <div class="feedback_form_area_inner col-lg-12 layout-spacing">
+                                            <div class="statbox widget box box-shadow">
+                                                <div class="widget-header">
+                                                    <div class="row">
+                                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                                            <h4>Add TimeSheet</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="widget-content widget-content-area">
+                                                    <form action="javascript:void(0);">
+
+                                                        <div class="row">
+
+                                                            <div class="col-md-12">
+                                                                <label class="">Project:</label>
+                                                                <div class="d-flex event-project">
+                                                                    @Html.DropDownListFor(m => String.Empty, ProjectDropdownBuilder.GetList(String.Empty, timeSheet.WorkItemList), new { id = "monthProjectId", onchange = "onChangeMonthProject();", @class = "form-control popup-basic" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <label class="">Task/Bugs:</label>
+                                                                <div class="d-flex event-task-bug">
+                                                                    @Html.DropDownListFor(m => String.Empty, new SelectList(string.Empty, "Task", "Task"), new { id = "monthTask", @class = "form-control popup-basic" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="form-group event-date">
+                                                                    <label for="task-start-date" class="">Date:</label>
+                                                                    <div class="d-flex">
+                                                                        <input id="task-start-date" placeholder="Date" class="form-control" type="text">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <label for="taskMonthHours" class="">Hours :</label>
+                                                                <div class="d-flex timesheet-hours">
+                                                                    <input id="taskMonthHours" type="number" maxlength="2" placeholder="Hours" class="form-control" name="taskMonthHours">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br /> 
+                                                        <div class="row" style="border-top: 2px solid lightgrey">
+                                                            <div class="modal-footer" >
+                                                                <button id="closeForm" class="btn btn-lg" style="color: blue; border:  1px solid lightgrey" >Cancel</button>
+                                                                <button id="add-time-sheet" class="btn btn-primary btn-lg">Add</button>
+                                                            </div>
+
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- The Modal -->
+                                <div id="addEventsModal" class="modal animated fadeIn">
+
+                                    <div class="modal-dialog modal-dialog-centered">
+
+                                        <!-- Modal content -->
+                                        <div class="modal-content">
+
+                                            <div class="modal-body">
+
+                                                <span class="close">&times;</span>
+
+                                                <div class="add-edit-event-box">
+                                                    <div class="add-edit-event-content">
+                                                        
+                                                        <h5 class="edit-event-title modal-title">Edit TimeSheet</h5>
+
+                                                        <form class="">
+                                                            
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <div class="form-group event-date">
+                                                                        <label for="edit-project" class="">Project:</label>
+                                                                        <div class="d-flex">
+                                                                            <input id="edit-project" class="form-control" type="text" readonly="readonly">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <div class="form-group event-date">
+                                                                        <label for="task-taskandbugs" class="">Task/Bugs:</label>
+                                                                        <div class="d-flex">
+                                                                            <input id="task-taskandbugs" class="form-control" type="text" readonly="readonly">
+                                                                            <input type="hidden" id="task-timesheetId">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <div class="form-group event-date">
+                                                                        <label for="edit-start-date" class="">Date:</label>
+                                                                        <div class="d-flex">
+                                                                            <input id="edit-start-date" placeholder="Date" class="form-control" type="text" readonly="readonly">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <div class="form-group event-date">
+                                                                        <label for="edit-taskhours" class="">Hours:</label>
+                                                                        <div class="d-flex">
+                                                                            <input id="edit-taskhours" placeholder="Hours" class="form-control" type="number">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button id="discard" class="btn" data-dismiss="modal">Discard</button>
+                                                <button id="edit-time-sheet" class="btn btn-primary">Save</button>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    
+                    <div class="tab-pane fade" id="justify-right-pills-profile" role="tabpanel" aria-labelledby="justify-right-pills-profile-tab">
+                            <div class="row">
+                                <div class="col-md-6 col-6 text-md-left text-center">
+                                    <button id="prev" class="btn btn-outline-primary mb-1 mr-1 rounded-circle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left-circle">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 8 8 12 12 16"></polyline>
+                                            <line x1="16" y1="12" x2="8" y2="12"></line>
+                                        </svg>
+                                    </button>
+                                    <a href="javascript:void(0)" style="margin: 10px" id="weekDateTime"></a>
+                                    <button id="next" class="btn btn-outline-primary mb-1 mr-1 rounded-circle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 16 16 12 12 8"></polyline>
+                                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="col-md-6 col-6 text-md-right text-right">
+                                    <button id="r" class="btn btn-primary" onclick="onSaveWeekTimeSheetList()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-save">
+                                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                                            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                            <polyline points="7 3 7 8 15 8"></polyline>
+                                        </svg> Save
+                                    </button>
+                                </div>
+                            </div>
+                           
+                            <div class="scroll">
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-md-2">
+                                        @Html.Label("Project Name")
+                                    </div>
+                                    <div class="col-md-2">
+                                        @Html.Label("Task/Bugs")
+                                    </div>
+
+                                    <div class="col-md-1">
+                                        <label id="mondayLabel">
+                                        </label>
+
+                                        <label id="mondayDateLabel">
+                                        </label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label id="tuesdayLabel">
+                                        </label>
+
+                                        <label id="tuesdayDateLabel">
+                                        </label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label id="wednesdayLabel">
+                                        </label>
+
+                                        <label id="wednesdayDateLabel">
+                                        </label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label id="thursdayLabel">
+                                        </label>
+
+                                        <label id="thursdayDateLabel">
+                                        </label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label id="fridayLabel">
+                                        </label>
+
+                                        <label id="fridayDateLabel">
+                                        </label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label id="saturdayLabel"></label>
+                                        <label id="saturdayDateLabel"></label>
+
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label id="sundayLabel">
+                                        </label>
+
+                                        <label id="sundayDateLabel">
+                                        </label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        @Html.Label("Total")
+                                        <br />
+                                        @Html.Label("Hours")
+                                    </div>
+
+                                </div>
+                                <div id="weekDiv">
+                                    @{ await Html.RenderPartialAsync(UrlConstant.TimeSheetWeekViewCshtml, timeSheet); }
+                                </div>
+                                <section class="centered-container">
+                                    <a class="link link--arrowed" href="javascript:void(0)" onclick="addWeekViewControl()">
+                                        Add New Row
+                                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                                            <g fill="none" stroke="#2175FF" stroke-width="1.5" stroke-linejoin="round" stroke-miterlimit="10">
+                                                <circle class="arrow-icon--circle" cx="16" cy="16" r="15.12"></circle>
+                                                <path class="arrow-icon--arrow" d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"></path>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </section>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+}

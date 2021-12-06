@@ -1,0 +1,133 @@
+﻿@using HI.DevOps.Web.Common.Helper.Builder
+@model HI.DevOps.DomainCore.Models.TimeSheet.TimeSheetViewModel
+
+@{
+    var weekTimeSheet = Model;
+    if (weekTimeSheet == null)
+    {
+        throw new ArgumentNullException(nameof(weekTimeSheet));
+    }
+
+    for (var weekIndex = 1; weekIndex <= weekTimeSheet.NumberOfTimeSheet; weekIndex++)
+    {
+        if (weekTimeSheet.NumberOfTimeSheet == 1 && weekTimeSheet.NumberOfTimeSheet != weekTimeSheet.WeekTimeSheetIndex)
+        {
+            weekIndex = weekTimeSheet.WeekTimeSheetIndex;
+        }
+        <div class="row layout-top-spacing">
+            <div class="col-md-2">
+
+                @if (weekTimeSheet.WeekTimeSheetList.Count() < weekIndex)
+                {
+                    @Html.DropDownListFor(m => string.Empty, ProjectDropdownBuilder.GetList(string.Empty, weekTimeSheet.WorkItemList), new {id = $"ProjectId_{weekIndex}", onchange = $"loadTask({weekIndex});", @class = "form-control week-task basic"})
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.WeekTimeSheetList[weekIndex - 1].Project, new {id = $"ProjectIdTxt_{weekIndex}", @class = "form-control updateTask", @readonly = "readonly"})
+                }
+
+            </div>
+            <div class="col-md-2">
+
+                @if (weekTimeSheet.WeekTimeSheetList.Count() < weekIndex)
+                {
+                    @Html.DropDownListFor(m => string.Empty, new SelectList(string.Empty, "Task", "Task"), new {id = $"task_{weekIndex}", onchange = $"onTaskChange({weekIndex});", @class = "form-control week-task basic"})
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.WeekTimeSheetList[weekIndex - 1].Task, new {id = $"TaskIdTxt_{weekIndex}", @class = "form-control updateTask", @readonly = "readonly"})
+                }
+
+            </div>
+
+            <div class="col-md-1">
+                @if (weekTimeSheet.WeekTimeSheetList.Count() < weekIndex)
+                {
+                    @Html.TextBoxFor(m => string.Empty, new {id = $"mondayTxt_{weekIndex}", @class = "form-control week-task", onblur = $"Total({weekIndex});", maxlength = "2", type = "number", @readonly = "readonly", min = "1", max = "24" , oninput="validity.valid||(value='0');"})
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.WeekTimeSheetList[weekIndex - 1].Monday, new {id = $"mondayUpdateTxt_{weekIndex}", @class = "form-control updateTask", onblur = $"EditTotal({weekIndex});", maxlength = "2", oninput="validity.valid||(value='0');",type = "number",min = "1", max = "24", project = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Project, task = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Task,epic = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Epic,feature = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Feature,userStory = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].UserStory,requirement = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Requirement})
+                }
+            </div>
+            <div class="col-md-1">
+                @if (weekTimeSheet.WeekTimeSheetList.Count() < weekIndex)
+                {
+
+                    @Html.TextBoxFor(m => string.Empty, new {id = $"tuesdayTxt_{weekIndex}", @class = "form-control week-task", onblur = $"Total({weekIndex});", maxlength = "2", type = "number", min = "1", max = "24", @readonly = "readonly",oninput="validity.valid||(value='');"})
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.WeekTimeSheetList[weekIndex - 1].Tuesday, new {id = $"tuesdayUpdateTxt_{weekIndex}", @class = "form-control updateTask", onblur = $"EditTotal({weekIndex});", maxlength = "2",oninput="validity.valid||(value='');", type = "number",min = "1", max = "24", project = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Project, task = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Task,epic = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Epic,feature = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Feature,userStory = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].UserStory,requirement = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Requirement})
+                }
+            </div>
+            <div class="col-md-1">
+                @if (weekTimeSheet.WeekTimeSheetList.Count() < weekIndex)
+                {
+
+                    @Html.TextBoxFor(m => string.Empty, new {id = $"wednesdayTxt_{weekIndex}", @class = "form-control week-task", onblur = $"Total({weekIndex});", @readonly = "readonly", maxlength = "2", type = "number", min = "1", max = "24", oninput="validity.valid||(value='0');"})
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.WeekTimeSheetList[weekIndex - 1].Wednesday, new {id = $"wednesdayUpdateTxt_{weekIndex}", @class = "form-control updateTask", onblur = $"EditTotal({weekIndex});", maxlength = "2", oninput="validity.valid||(value='0');", type = "number",min = "1", max = "24", project = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Project, task = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Task,epic = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Epic,feature = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Feature,userStory = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].UserStory,requirement = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Requirement})
+                }
+            </div>
+            <div class="col-md-1">
+                @if (weekTimeSheet.WeekTimeSheetList.Count() < weekIndex)
+                {
+
+                    @Html.TextBoxFor(m => string.Empty, new {id = $"thursdayTxt_{weekIndex}", @class = "form-control week-task", onblur = $"Total({weekIndex});", @readonly = "readonly", maxlength = "2", type = "number", min = "1", max = "24", oninput="validity.valid||(value='0');"})
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.WeekTimeSheetList[weekIndex - 1].Thursday, new {id = $"thursdayUpdateTxt_{weekIndex}", @class = "form-control updateTask", onblur = $"EditTotal({weekIndex});", maxlength = "2", oninput="validity.valid||(value='0');", type = "number",min = "1", max = "24", project = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Project, task = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Task,epic = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Epic,feature = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Feature,userStory = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].UserStory,requirement = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Requirement})
+                }
+            </div>
+            <div class="col-md-1">
+                @if (weekTimeSheet.WeekTimeSheetList.Count() < weekIndex)
+                {
+
+                    @Html.TextBoxFor(m => string.Empty, new {id = $"fridayTxt_{weekIndex}", @class = "form-control week-task", onblur = $"Total({weekIndex});", @readonly = "readonly", maxlength = "2", type = "number", oninput="validity.valid||(value='0');", min = "1", max = "24"})
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.WeekTimeSheetList[weekIndex - 1].Friday, new {id = $"fridayUpdateTxt_{weekIndex}", oninput="validity.valid||(value='0');", @class = "form-control updateTask", onblur = $"EditTotal({weekIndex});", maxlength = "2", type = "number",min = "1", max = "24", project = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Project, task = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Task,epic = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Epic,feature = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Feature,userStory = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].UserStory,requirement = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Requirement})
+                }
+            </div>
+            <div class="col-md-1">
+                @if (weekTimeSheet.WeekTimeSheetList.Count() < weekIndex)
+                {
+
+                    @Html.TextBoxFor(m => string.Empty, new {id = $"saturdayTxt_{weekIndex}", @class = "form-control week-task", oninput="validity.valid||(value='0');", onblur = $"Total({weekIndex});", @readonly = "readonly", maxlength = "2", type = "number", min = "1", max = "24"})
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.WeekTimeSheetList[weekIndex - 1].Saturday, new {id = $"saturdayUpdateTxt_{weekIndex}", @class = "form-control updateTask", onblur = $"EditTotal({weekIndex});", maxlength = "2", type = "number", min = "1", max = "24",project = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Project, task = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Task,epic = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Epic,feature = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Feature,userStory = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].UserStory,requirement = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Requirement})
+                }
+            </div>
+            <div class="col-md-1">
+                @if (weekTimeSheet.WeekTimeSheetList.Count() < weekIndex)
+                {
+
+                    @Html.TextBoxFor(m => string.Empty, new {id = $"sundayTxt_{weekIndex}", @class = "form-control week-task", oninput="validity.valid||(value='0');", onblur = $"Total({weekIndex});", @readonly = "readonly", maxlength = "2", type = "number", min = "1", max = "24"})
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.WeekTimeSheetList[weekIndex - 1].Sunday, new {id = $"sundayUpdateTxt_{weekIndex}", oninput="validity.valid||(value='0');", @class = "form-control updateTask", onblur = $"EditTotal({weekIndex});", maxlength = "2", type = "number",min = "1", max = "24", project = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Project, task = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Task,epic = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Epic,feature = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Feature,userStory = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].UserStory,requirement = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Requirement})
+                }
+            </div>
+            <div class="col-md-1">
+                @if (weekTimeSheet.WeekTimeSheetList.Count() < weekIndex)
+                {
+
+                    @Html.TextBoxFor(m => string.Empty, new {id = $"totalTxt_{weekIndex}", @class = "form-control week-task", oninput="validity.valid||(value='0');", @readonly = "readonly", maxlength = "2", type = "number"})
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.WeekTimeSheetList[weekIndex - 1].Total, new {id = $"totalUpdateTxt_{weekIndex}", oninput="validity.valid||(value='0');", @class = "form-control updateTask", onblur = $"Total({weekIndex});", @readonly = "readonly", maxlength = "2", type = "number", min = "1", max = "24",project = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Project, task = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Task,epic = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Epic,feature = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Feature,userStory = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].UserStory,requirement = weekTimeSheet.WeekTimeSheetList[weekIndex - 1].Requirement})
+                }
+            </div>
+        </div>
+        <div style="margin-top: 10px;"></div>
+    }
+}

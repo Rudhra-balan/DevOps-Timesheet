@@ -1,0 +1,85 @@
+
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/Authentication/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5004
+        }
+      ],
+      "UpstreamPathTemplate": "/HI.DevOps.Security.Api/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "SwaggerKey": "Authenticate"
+    },
+    {
+      "DownstreamPathTemplate": "/TimeSheet/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5005
+        }
+
+      ],
+      "UpstreamPathTemplate": "/HI.DevOps.TimeSheet.Api/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "SwaggerKey": "TimeSheet"
+    },
+    {
+      "DownstreamPathTemplate": "/Export/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5006
+        }
+
+      ],
+      "UpstreamPathTemplate": "/HI.DevOps.Export.Api/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "SwaggerKey": "Export"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "Authenticate",
+      "Config": [
+        {
+          "Name": "Authentication API",
+          "Version": "v1",
+          "Url": "http://localhost:5004/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "TimeSheet",
+      "Config": [
+        {
+          "Name": "TimeSheet API",
+          "Version": "v1",
+          "Url": "http://localhost:5005/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "Export",
+      "Config": [
+        {
+          "Name": "Export API",
+          "Version": "v1",
+          "Url": "http://localhost:5006/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost",
+    "ServiceDiscoveryProvider": {
+      "Type": "AppConfiguration",
+      "PollingIntervalSeconds": 10000
+    }
+  }
+}

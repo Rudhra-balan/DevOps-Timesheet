@@ -1,0 +1,39 @@
+﻿@model HI.DevOps.DomainCore.Models.Login.LoginUserViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@{
+    <div class="form-form">
+
+        @if (Model?.Message != null)
+        {
+            <div class="alert alert-danger alert-bottom-login" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather close" data-dismiss="alert">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button> <strong>Login Failed :</strong> @Html.Raw(Model.Message)
+            </div>
+        }
+        <div class="form-form-wrap">
+            <div class="form-container">
+                <div class="form-content">
+                    <h2 class="">Login to <span class="brand-name">azure DevOps</span></h2>
+                    <p class="signup-link"></p>
+                    <p>
+                        <a href="HI.DevOps.Web/Authorize" class="btn btn-primary">Authorize &raquo;</a>
+                    </p>
+                    <p class="terms-conditions">© 2020 All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-image">
+        <div class="l-image">
+        </div>
+    </div>
+
+}

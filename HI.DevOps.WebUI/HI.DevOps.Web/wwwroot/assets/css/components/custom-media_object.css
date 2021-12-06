@@ -1,0 +1,182 @@
+/*
+	===============================
+			@Import	Function
+	===============================
+*/
+/*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+.widget-content-area { padding: 10px 20px; }
+
+.toggle-code-snippet { margin-bottom: -6px; }
+
+/*      Media Object      */
+
+.media {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.media img {
+    height: 50px;
+    margin-right: 15px;
+    width: 50px;
+}
+
+.media .media-body { align-self: center; }
+
+.media .media-body .media-heading {
+    color: #3b3f5c;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.media .media-body .media-text {
+    color: #515365;
+    font-size: 14px;
+    letter-spacing: 0;
+    margin-bottom: 0;
+}
+
+/*      Right Aligned   */
+
+.media-right-aligned .media img {
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+/* 	Media Notation 	*/
+
+.notation-text .media:first-child { border-top: none; }
+
+.notation-text .media .media-body .media-notation {
+    margin-bottom: 9px;
+    margin-top: 8px;
+}
+
+.notation-text .media .media-body .media-notation a {
+    color: #515365;
+    font-size: 13px;
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+/* 	Media Notation With Icon	*/
+
+.notation-text-icon .media:first-child { border-top: none; }
+
+.notation-text-icon .media .media-body .media-notation {
+    margin-bottom: 9px;
+    margin-top: 8px;
+}
+
+.notation-text-icon .media .media-body .media-notation a {
+    color: #515365;
+    font-size: 13px;
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+.notation-text-icon .media .media-body .media-notation a svg {
+    color: #888ea8;
+    fill: rgba(0, 23, 55, 0.08);
+    height: 18px;
+    margin-right: 6px;
+    vertical-align: sub;
+    width: 18px;
+}
+
+/* 	With Labels	*/
+
+.m-o-label .media:first-child { border-top: none; }
+
+.m-o-label .media .badge { float: right; }
+
+/* 	Dropdown	*/
+
+.m-o-dropdown-list .media:first-child { border-top: none; }
+
+.m-o-dropdown-list .media .media-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.m-o-dropdown-list .media .media-heading div.dropdown-list {
+    color: #888ea8;
+    cursor: pointer;
+    float: right;
+    font-size: 18px;
+}
+
+.m-o-dropdown-list .media .media-heading div.dropdown-list a.dropdown-item span { align-self: center; }
+
+.m-o-dropdown-list .media .media-heading div.dropdown-list a.dropdown-item svg {
+    align-self: center;
+    color: #888ea8;
+    fill: rgba(0, 23, 55, 0.08);
+    height: 20px;
+    margin-left: 20px;
+    width: 20px;
+}
+
+.m-o-dropdown-list .media .media-heading div.dropdown-list a.dropdown-item:hover svg {
+    color: #1b55e2;
+    fill: rgba(27, 85, 226, 0.239216);
+}
+
+.m-o-dropdown-list .dropdown-menu {
+    border: 1px solid #ebedf2;
+    border-radius: 6px;
+    box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.2);
+    min-width: 9rem;
+    padding: 9px 0;
+}
+
+.m-o-dropdown-list .dropdown-item {
+    color: #888ea8;
+    display: flex;
+    font-size: 14px;
+    justify-content: space-between;
+    padding: 5px 12px;
+}
+
+.m-o-dropdown-list .dropdown-item:hover {
+    background-color: #f1f2f3;
+    color: #e95f2b;
+    text-decoration: none;
+}
+
+/* 	Label Icon	*/
+
+.m-o-label-icon .media:first-child { border-top: none; }
+
+.m-o-label-icon .media svg.label-icon {
+    align-self: center;
+    height: 30px;
+    margin-right: 16px;
+    width: 30px;
+}
+
+.m-o-label-icon .media svg.label-icon.label-success { color: #8dbf42; }
+
+.m-o-label-icon .media svg.label-icon.label-danger { color: #ee3d49; }
+
+.m-o-label-icon .media svg.label-icon.label-warning { color: #ffbb44; }
+
+/* 	Checkbox	*/
+
+.m-o-chkbox .media:first-child { border-top: none; }
+
+.m-o-chkbox .media .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before { background-color: #515365; }
+
+/* 	Checkbox	*/
+
+.m-o-radio .media:first-child { border-top: none; }
+
+.m-o-radio .media .custom-radio .custom-control-input:checked ~ .custom-control-label::before { background-color: #515365; }
+
+.custom-control-label::before { background-color: #d3d3d3; }

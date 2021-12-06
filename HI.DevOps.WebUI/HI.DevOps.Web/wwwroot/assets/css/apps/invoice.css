@@ -1,0 +1,489 @@
+/*
+	===============================
+			@Import	Function
+	===============================
+*/
+/*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+.main-container { min-height: auto; }
+
+.layout-px-spacing { min-height: auto !important; }
+
+@keyframes fadeInUp {
+    from { transform: translate3d(0, 40px, 0); }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from { transform: translate3d(0, 40px, 0); }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.animatedFadeInUp { opacity: 0; }
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    opacity: 0;
+}
+
+.actions-btn-tooltip.tooltip {
+    opacity: 1;
+    top: -11px !important;
+}
+
+.actions-btn-tooltip .arrow:before { border-top-color: #3b3f5c; }
+
+.actions-btn-tooltip .tooltip-inner {
+    background: #3b3f5c;
+    border-radius: 30px;
+    box-shadow: 0px 5px 15px 1px rgba(113, 106, 202, 0.2);
+    color: #fff;
+    font-weight: 700;
+    padding: 4px 16px;
+}
+
+.doc-container {
+    -moz-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.08), 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0px 1px 11px 0px rgba(0, 0, 0, 0.07);
+    -webkit-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.08), 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0px 1px 11px 0px rgba(0, 0, 0, 0.07);
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.08), 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0px 1px 11px 0px rgba(0, 0, 0, 0.07);
+    display: flex;
+    position: relative;
+}
+
+.tab-title { min-width: 250px; }
+
+.tab-title .search {
+    border-bottom: 1px solid #e0e6ed;
+    border-right: 1px solid #e0e6ed;
+}
+
+.tab-title .search input {
+    background: transparent;
+    border: none;
+    height: auto;
+    padding: 18px 18px 18px 18px;
+}
+
+.tab-title .search input::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #888ea8;
+}
+
+.tab-title .search input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #888ea8;
+}
+
+.tab-title .search input:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #888ea8;
+}
+
+.tab-title .search input:-moz-placeholder {
+    /* Firefox 18- */
+    color: #888ea8;
+}
+
+.tab-title .inv-list-container {
+    border-right: 1px solid #e0e6ed;
+    height: calc(100vh - 256px);
+    margin: auto;
+    overflow: auto;
+    position: relative;
+}
+
+.tab-title .nav-item { border-bottom: 1px solid #e0e6ed; }
+
+.tab-title .list-actions {
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 20px 10px;
+    transition: all 0.35s ease;
+}
+
+.tab-title .list-actions.active {
+    -webkit-transform: translateY(0) scale(1.03);
+    background-color: #fff;
+    box-shadow: 0px 0px 15px 1px #ebedf2;
+    transform: translateY(0) scale(1.03);
+}
+
+.tab-title .list-actions:hover {
+    -webkit-transform: translateY(0) scale(1.03);
+    box-shadow: 0px 0px 15px 1px #ebedf2;
+    transform: translateY(0) scale(1.03);
+}
+
+.tab-title .list-actions .f-m-body { display: flex; }
+
+.tab-title .list-actions .f-m-body .f-head {
+    align-self: center;
+    margin-right: 13px;
+}
+
+.tab-title .list-actions .f-m-body .f-head svg {
+    background: rgba(0, 23, 55, 0.08);
+    border-radius: 50%;
+    color: #0e1726;
+    height: 30px;
+    padding: 6px;
+    width: 30px;
+}
+
+.tab-title .list-actions .f-m-body .f-body .invoice-number {
+    color: #888ea8;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.tab-title .list-actions .f-m-body .f-body .invoice-customer-name {
+    color: #0e1726;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.tab-title .list-actions .f-m-body .f-body .invoice-customer-name span { color: #3b3f5c; }
+
+.tab-title .list-actions .f-m-body .f-body .invoice-generated-date {
+    color: #3b3f5c;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.invoice-container { width: 100%; }
+
+.invoice-inbox {
+    height: calc(100vh - 197px);
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    width: 100%;
+}
+
+.invoice-inbox .inv-not-selected {
+    background-image: url(../../img/bg.png);
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+.invoice-inbox .inv-not-selected p {
+    -webkit-box-shadow: 0px 2px 4px rgba(126, 142, 177, 0.12);
+    align-self: center;
+    background: #bfc9d4;
+    border-radius: 6px;
+    box-shadow: 0px 2px 4px rgba(126, 142, 177, 0.12);
+    color: #3b3f5c;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 0;
+    padding: 7px 11px;
+}
+
+.invoice-inbox .invoice-header-section {
+    border-bottom: 1px solid #ebedf2;
+    display: flex;
+    display: none;
+    justify-content: space-between;
+    padding: 17px 20px;
+}
+
+.invoice-inbox .inv-number {
+    color: #888ea8;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.invoice-inbox .invoice-action svg {
+    color: #888ea8;
+    cursor: pointer;
+    fill: rgba(0, 23, 55, 0.08);
+    font-weight: 600;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.invoice-inbox .invoice-action svg:not(:last-child) { margin-right: 15px; }
+
+.invoice-inbox .invoice-action svg:hover {
+    color: #1b55e2;
+    fill: rgba(27, 85, 226, 0.239216);
+}
+
+.invoice-inbox #ct { display: none; }
+
+/*
+===================
+
+     Invoice
+
+===================
+*/
+
+/*Invoice*/
+
+.content-section { padding: 36px 35px; }
+
+.invoice .content-section { height: calc(100vh - 193px); }
+
+.invoice .content-section .inv--head-section { margin-bottom: 50px; }
+
+.invoice .content-section .inv--head-section h3.in-heading {
+    color: #0e1726;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.invoice .content-section .inv--head-section div.company-info {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.invoice .content-section .inv--head-section div.company-info svg {
+    color: #1b55e2;
+    fill: rgba(27, 85, 226, 0.239216);
+    height: 42px;
+    margin-right: 10px;
+    width: 42px;
+}
+
+.invoice .content-section .inv--head-section .inv-brand-name {
+    align-self: center;
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.invoice .content-section .inv--detail-section .inv-to {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.invoice .content-section .inv--detail-section .inv-customer-name {
+    color: #1b55e2;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.invoice .content-section .inv--detail-section .inv-detail-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 0;
+    margin-bottom: 15px;
+}
+
+.invoice .content-section .inv--detail-section .inv-details {
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.invoice .content-section .inv--detail-section .inv-street-addr, .invoice .content-section .inv--detail-section .inv-email-address {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.invoice .content-section .inv--detail-section .inv-list-number { margin-bottom: 2px; }
+
+.invoice .content-section .inv--detail-section .inv-list-number .inv-title {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.invoice .content-section .inv--detail-section .inv-list-number .inv-number {
+    color: #1b55e2;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.invoice .content-section .inv--detail-section .inv-created-date, .invoice .content-section .inv--detail-section .inv-due-date { margin-bottom: 2px; }
+
+.invoice .content-section .inv--detail-section .inv-created-date .inv-title, .invoice .content-section .inv--detail-section .inv-due-date .inv-title {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.invoice .content-section .inv--detail-section .inv-created-date .inv-date, .invoice .content-section .inv--detail-section .inv-due-date .inv-date {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.invoice .content-section .inv--product-table-section {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.invoice .content-section .inv--product-table-section table { border: 1px solid #e0e6ed; }
+
+.invoice .content-section .inv--product-table-section thead tr {
+    background: #ebedf2;
+    border: none;
+}
+
+.invoice .content-section .inv--product-table-section th {
+    border: none;
+    color: #1b55e2;
+}
+
+.invoice .content-section .inv--product-table-section td {
+    border-top: 1px solid #e0e6ed;
+    color: #515365;
+    font-weight: 600;
+}
+
+.invoice .content-section .inv--payment-info {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 52px;
+}
+
+.invoice .content-section .inv--payment-info .inv-title {
+    color: #1b55e2;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.invoice .content-section .inv--payment-info .inv-subtitle {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.invoice .content-section .inv--total-amounts {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 52px;
+}
+
+.invoice .content-section .inv--total-amounts .grand-total-title h4, .invoice .content-section .inv--total-amounts .grand-total-amount h4 {
+    color: #0e1726;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+    padding: 0;
+    position: relative;
+}
+
+/*    Inv head section   */
+
+/*    Inv detail section    */
+
+/*inv-list-number*/
+
+/*inv-created-date*/
+
+/*inv-due-date*/
+
+/*    Inv product table section    */
+
+/*inv--payment-info*/
+
+/*inv--total-amounts*/
+
+/*inv--thankYou*/
+
+.inv--thankYou {
+    display: none;
+    text-align: center;
+}
+
+.inv--thankYou p {
+    color: #888ea8;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+@media print {
+    body * { visibility: hidden; }
+
+    #ct { visibility: visible; }
+
+    #ct * { visibility: visible; }
+
+    .doc-container {
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
+@page {
+    margin: 0mm;
+    size: auto;
+}
+
+@media (max-width: 1199px) {
+    .doc-container { overflow: auto; }
+
+    .tab-title {
+        left: -300px;
+        position: absolute;
+        z-index: 60;
+    }
+
+    .tab-title.open-inv-sidebar {
+        background: #fff;
+        left: 0;
+    }
+
+    .app-hamburger-container { text-align: right; }
+
+    .hamburger {
+        align-self: center;
+        background-color: #515365;
+        border-radius: 50%;
+        color: #fff;
+        display: inline-block;
+        font-size: 20px;
+        padding: 6px 9px 6px 9px;
+        position: relative;
+        top: -13px;
+    }
+}
+
+@media (max-width: 575px) {
+    .invoice .content-section .inv--head-section div.company-info { justify-content: flex-start; }
+
+    .invoice .content-section .inv--detail-section .inv-detail-title {
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 991px) {
+    .layout-top-spacing { margin-top: 37px; }
+}

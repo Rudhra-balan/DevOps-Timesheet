@@ -1,0 +1,261 @@
+/*
+	===============================
+			@Import	Function
+	===============================
+*/
+/*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+/*
+  Live Search
+*/
+.filtered-list-search {
+    margin-bottom: 50px;
+    margin-top: 0;
+}
+
+.filtered-list-search form > div { position: relative; }
+
+.filtered-list-search form input {
+    -webkit-box-shadow: 0 0 4px 2px rgba(31, 45, 61, 0.1);
+    background: #fff;
+    border: none;
+    box-shadow: 0 0 4px 2px rgba(31, 45, 61, 0.1);
+    padding: 10px 16px;
+}
+
+.filtered-list-search form input:focus { box-shadow: 0 0 4px 2px rgba(31, 45, 61, 0.1); }
+
+.filtered-list-search form button {
+    border-radius: 50%;
+    padding: 7px 7px;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+}
+
+.filtered-list-search form input::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #888ea8;
+}
+
+.filtered-list-search form input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #888ea8;
+}
+
+.filtered-list-search form input:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #888ea8;
+}
+
+.filtered-list-search form input:-moz-placeholder {
+    /* Firefox 18- */
+    color: #888ea8;
+}
+
+.searchable-container {
+    margin: 0 auto;
+    max-width: 1140px;
+}
+
+.searchable-items {
+    border: 1px solid #e0e6ed;
+    border-radius: 10px;
+    padding: 13px;
+}
+
+.searchable-container .searchable-items {
+    -webkit-overflow-scrolling: touch;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.searchable-container .items {
+    -ms-flex-align: center;
+    -ms-flex-direction: row;
+    -webkit-box-shadow: 0px 2px 9px 2px rgba(31, 45, 61, 0.1);
+    align-items: center;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0px 2px 9px 2px rgba(31, 45, 61, 0.1);
+    color: #0e1726;
+    cursor: pointer;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    min-width: 0;
+    min-width: 625px;
+    padding: .75rem .625rem;
+    padding: 13px 18px;
+    position: relative;
+    transition: all 0.35s ease;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.searchable-container .items:hover {
+    -webkit-transform: translateY(0) scale(1.03);
+    transform: translateY(0) scale(1.03);
+    transform: translateY(0) scale(1.01);
+}
+
+.searchable-container .items .user-profile { display: flex; }
+
+.searchable-container .items .user-profile img {
+    border-radius: 5px;
+    height: 43px;
+    width: 43px;
+}
+
+.searchable-container .items .user-name p, .searchable-container .items .user-work p, .searchable-container .items .user-email p {
+    color: #888ea8;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.searchable-container .items .user-status span.badge {
+    background: transparent;
+    transform: none;
+}
+
+.searchable-container .items .user-status span.badge.badge-warning {
+    border: 2px dashed #e2a03f;
+    color: #e2a03f;
+}
+
+.searchable-container .items .user-status span.badge.badge-danger {
+    border: 2px dashed #e7515a;
+    color: #e7515a;
+}
+
+.searchable-container .items .user-status span.badge.badge-primary {
+    border: 2px dashed #1b55e2;
+    color: #1b55e2;
+}
+
+.searchable-container .items .action-btn p {
+    color: #3b3f5c;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.searchable-container .items:hover .serial-number p, .searchable-container .items:hover .user-name p, .searchable-container .items:hover .user-work p, .searchable-container .items:hover .user-email p, .searchable-container .items:hover .action-btn p { color: #1b55e2; }
+
+/*
+    Line Search
+*/
+
+.full-search.search-form-overlay {
+    border: 1px solid #e0e6ed;
+    border-radius: 5px;
+    height: 50px;
+    padding: 6px;
+    position: relative;
+}
+
+.search-form-overlay.input-focused .form-inline.search {
+    background: #fff;
+    border-radius: 0;
+    bottom: 0;
+    display: flex;
+    height: 100%;
+    left: 0;
+    margin-top: 0px !important;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 32;
+}
+
+.search-form-overlay .form-inline { justify-content: flex-end; }
+
+.search-form-overlay .form-inline svg {
+    color: #888ea8;
+    cursor: pointer;
+    font-weight: 600;
+    margin: 4px 10px;
+}
+
+.search-form-overlay.input-focused .form-inline svg {
+    left: 11px;
+    margin: 0;
+    position: absolute;
+    top: 10px;
+}
+
+.search-form-overlay.input-focused .form-inline.search .search-bar { width: 100%; }
+
+.search-form-overlay form.form-inline input.search-form-control {
+    background-color: #e3e3e3;
+    border: none;
+    color: #515365;
+    font-size: 13px;
+    letter-spacing: 1px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    width: 100%;
+}
+
+.search-form-overlay .form-inline.search .search-form-control {
+    border: none;
+    box-shadow: none;
+    display: none;
+    width: 100%;
+}
+
+.search-form-overlay.input-focused .form-inline.search .search-form-control {
+    background: transparent;
+    border-bottom: none;
+    display: block;
+    padding-left: 45px;
+}
+
+.demo-search-overlay {
+    background: #fff !important;
+    display: none;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    transition: all 0.5s ease-in-out;
+    width: 100%;
+    z-index: 0;
+}
+
+.demo-search-overlay.show {
+    display: block;
+    opacity: .1;
+}
+
+/*
+    Search Box
+*/
+
+.search-input-group-style.input-group {
+    -webkit-box-shadow: 0px 0px 0px 1px rgba(136, 142, 168, 0.313725);
+    box-shadow: 0px 0px 0px 1px rgba(136, 142, 168, 0.313725);
+}
+
+.search-input-group-style.input-group .input-group-prepend .input-group-text {
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+.search-input-group-style.input-group .input-group-prepend .input-group-text svg { color: #1b55e2; }
+
+.search-input-group-style input {
+    border: none;
+    border-radius: 4px;
+    color: #0e1726;
+    padding: 6px 16px;
+}

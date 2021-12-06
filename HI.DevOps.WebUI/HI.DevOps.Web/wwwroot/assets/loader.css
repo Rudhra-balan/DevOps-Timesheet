@@ -1,0 +1,34 @@
+/*
+	===============================
+			@Import	Function
+	===============================
+*/
+/*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+div#load_screen {
+    background: #ecefff;
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+    position: fixed;
+    right: 0;
+    top: 0px;
+    width: 100%;
+    z-index: 999999;
+}
+
+div#load_screen .loader {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+}
+
+div#load_screen .loader-content {
+    align-self: center;
+    right: 0;
+}
+
+.spinner-grow { color: #304aca; }

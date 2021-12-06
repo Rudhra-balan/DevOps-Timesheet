@@ -1,0 +1,78 @@
+﻿@using HI.DevOps.Web.Common.Helper.Builder
+@model HI.DevOps.DomainCore.Models.Export.ExportQueryViewModel
+@{
+    var queryModel = Model;
+    if (queryModel == null)
+    {
+        throw new ArgumentNullException(nameof(queryModel));
+    }
+    for (var queryIndex = 0; queryIndex < queryModel.NumberOfControl; queryIndex++)
+    {
+        var controlID = queryModel.ControlIndex + queryIndex;
+
+    <div class="row" id="@($"queryContainer_{controlID}")">
+
+        <div class="col-md-1 col-1 text-md-left text-center">
+            @{
+                if (controlID != 1)
+                {
+                    <button id="@($"queryRemoveBtn_{controlID}")" onclick="removeQueryControl(@($"queryContainer_{controlID}"))" class="btn btn-outline-danger mb-1 mr-1 rounded-circle queryRemoveBtm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                    </button>
+                }
+            }
+        </div>
+        <div class="text-md-left text-center" style="margin-left: 10px; margin-top: -10px; margin-right: 10px">
+            <section title="Group Field" id="@($"querySection_{controlID}")">
+                <div class="squaredThree">
+                    <input type="checkbox" value="false" id="@($"queryGroup_{controlID}")"  class="query-group" onchange="isQueryCanGroup()"  name="check" />
+                    <label for="@($"queryGroup_{controlID}")"></label>
+                </div>
+            </section>
+
+        </div>
+        <div class="col-md-2 col-2  mb-1 mr-1 text-md-left text-center">
+            @{
+                if (controlID != 1)
+                {
+                    @Html.DropDownListFor(m => m.LogicOperator, LogicDropdownBuilder.GetList(), new { id = $"queryLogic_{controlID}", @class = "form-control querySelect" })
+                }
+            }
+
+        </div>
+        <div class="col-md-3 col-3  mb-1 mr-1 text-md-left text-center">
+            @Html.DropDownListFor(m => m.Field, FieldDropdownBuilder.GetList(), new { id = $"queryField_{controlID}", @class = "form-control querySelect", onchange = $"onFieldChange(this,{controlID});" })
+        </div>
+        <div class="col-md-2 col-2  mb-1 mr-1 text-md-left text-center">
+            @Html.DropDownListFor(m => m.Operator, new List<SelectListItem>(), new { id = $"queryOperator_{controlID}", @class = "form-control querySelect" })
+        </div>
+        <div class="col-md-3 col-3  mb-1 mr-1 text-md-left text-center"  id="@($"value-dropdown-container_{controlID}")"  style="display: block">
+            @Html.DropDownListFor(m => m.Value,UserDropdownBuilder.GetList(queryModel.UserList), new { id = $"queryValue_{controlID}", @class = "form-control querySelect" , disabled= true})
+
+        </div>
+        <div class="col-md-3 col-3  mb-1 mr-1 text-md-left text-center" id="@($"department-dropdown-container_{controlID}")"  style="display: none">
+            @Html.DropDownListFor(m => m.Value, DepartmentDropdownBuilder.GetList(), new { id = $"queryDepartment_{controlID}", @class = "form-control querySelect" })
+
+        </div>
+        <div class="col-md-3 col-3  mb-1 mr-1 text-md-left text-center query-export-start-date" id="@($"export-start-date-container_{controlID}")"  style="display: none">
+            <div class="form-group">
+                <div class="d-flex">
+                    <input id="@($"export-start-date_{controlID}")" placeholder="Start Date" class="form-control" type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-3  mb-1 mr-1 text-md-left text-center query-export-end-date" id="@($"export-end-date-container_{controlID}")" style="display: none">
+            <div class="form-group">
+                <div class="d-flex">
+                    <input placeholder="End Date" id="@($"export-end-date_{controlID}")" class="form-control" type="text">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    }
+}

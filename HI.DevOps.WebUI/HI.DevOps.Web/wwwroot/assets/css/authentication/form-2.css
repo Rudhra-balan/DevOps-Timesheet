@@ -1,0 +1,282 @@
+/*
+	===============================
+			@Import	Function
+	===============================
+*/
+/*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+html { height: 100%; }
+
+body {
+    background-color: #fff;
+    height: 100%;
+    margin: 0;
+    max-width: 100%;
+    overflow: auto;
+    padding: 0;
+}
+
+.form-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    min-height: 100%;
+    width: 50%;
+}
+
+.form-form .form-form-wrap {
+    align-self: center;
+    height: 100vh;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 480px;
+    min-height: 100%;
+    min-width: 311px;
+    width: 100%;
+}
+
+.form-form .form-container {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    min-height: 100%;
+    width: 100%;
+}
+
+.form-form .form-container .form-content {
+    -moz-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901961), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
+    -webkit-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901961), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
+    background: #fff;
+    border: 1px solid #e0e6ed;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901961), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
+    display: block;
+    padding: 25px;
+    text-align: center;
+    width: 100%;
+}
+
+.form-form .form-container .form-content h1 {
+    color: #3b3f5c;
+    font-size: 32px;
+}
+
+.form-form .form-container .form-content > p {
+    color: #888ea8;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 35px;
+}
+
+.form-form .form-form-wrap .user-meta { margin-bottom: 35px; }
+
+.form-form .form-form-wrap .user-meta img {
+    border: 4px solid #e0e6ed;
+    border-radius: 50%;
+    height: 52px;
+    margin-right: 15px;
+    width: 52px;
+}
+
+.form-form .form-form-wrap .user-meta div { align-self: center; }
+
+.form-form .form-form-wrap .user-meta p {
+    color: #3b3f5c;
+    font-size: 31px;
+    margin-bottom: 0;
+}
+
+.form-form .form-form-wrap h1 .brand-name {
+    color: #3b3f5c;
+    font-weight: 600;
+}
+
+.form-form .form-form-wrap p.signup-link {
+    color: #3b3f5c;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.form-form .form-form-wrap p.signup-link.register {
+    color: #888ea8;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    margin-top: 0;
+}
+
+.form-form .form-form-wrap p.signup-link.recovery { margin-top: 0; }
+
+.form-form .form-form-wrap p.signup-link a {
+    border-bottom: 1px solid;
+    color: #1b55e2;
+}
+
+.form-form .form-form-wrap form .field-wrapper { width: 100%; }
+
+.form-form .form-form-wrap form .field-wrapper.input {
+    border-bottom: none;
+    padding: 11px 0px 16px 0;
+    position: relative;
+}
+
+.form-form .form-form-wrap form .field-wrapper.input:focus { border: 1px solid #000; }
+
+.form-form .form-form-wrap form .field-wrapper.toggle-pass p {
+    color: #3b3f5c;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.form-form .form-form-wrap form .field-wrapper .logged-in-user-name {
+    color: #3b3f5c;
+    font-size: 37px;
+}
+
+.form-form .form-form-wrap form .field-wrapper label {
+    color: #3b3f5c;
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.form-form .form-form-wrap form .field-wrapper.terms_condition { margin-bottom: 20px; }
+
+.form-form .form-form-wrap form .field-wrapper.terms_condition label {
+    color: #888ea8;
+    font-size: 14px;
+    font-weight: 100;
+    padding-left: 31px;
+}
+
+.form-form .form-form-wrap form .field-wrapper.terms_condition a { color: #1b55e2; }
+
+.form-form .form-form-wrap form .field-wrapper svg.feather-user { top: 53px; }
+
+.form-form .form-form-wrap form .field-wrapper svg.feather-lock { top: 50px; }
+
+.form-form .form-form-wrap form .field-wrapper svg.feather-at-sign { top: 47px; }
+
+.form-form .form-form-wrap form .field-wrapper svg.feather-at-sign.register { top: 53px; }
+
+.form-form .form-form-wrap form .field-wrapper svg:not(.feather-eye) {
+    color: #888ea8;
+    fill: rgba(0, 23, 55, 0.08);
+    height: 20px;
+    left: 12px;
+    position: absolute;
+    width: 20px;
+}
+
+.form-form .form-form-wrap form .field-wrapper svg.feather-eye {
+    color: #888ea8;
+    cursor: pointer;
+    fill: rgba(0, 23, 55, 0.08);
+    position: absolute;
+    right: 13px;
+    top: 49px;
+    width: 17px;
+}
+
+.form-form .form-form-wrap form .field-wrapper input {
+    -ms-transition: all 0.2s ease-in-out 0s;
+    border-radius: 6px;
+    color: #3b3f5c;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    max-width: 635px;
+    min-width: 50px;
+    padding: 13px 35px 13px 46px;
+    transition: all 0.2s ease-in-out 0s;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.form-form .form-form-wrap form .field-wrapper input::-webkit-input-placeholder, .form-form .form-form-wrap form .field-wrapper input::-ms-input-placeholder, .form-form .form-form-wrap form .field-wrapper input::-moz-placeholder {
+    color: #d3d3d3;
+    font-size: 14px;
+}
+
+.form-form .form-form-wrap form .field-wrapper button.btn {
+    align-self: center;
+    font-size: 16px;
+    letter-spacing: 2px;
+    padding: 11px 14px;
+    width: 100%;
+}
+
+.form-form .form-form-wrap form .field-wrapper a.forgot-pass-link {
+    color: #888ea8;
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.form-form .form-form-wrap form .field-wrapper .n-chk .new-control-indicator {
+    background-color: #f1f2f3;
+    border: 1px solid #bfc9d4;
+    top: 2px;
+}
+
+.form-form .form-form-wrap form .field-wrapper .n-chk .new-control-indicator:after { top: 54%; }
+
+.new-control.new-checkbox.checkbox-primary > input:checked ~ span.new-control-indicator { border: none; }
+
+.form-form .form-form-wrap form .division {
+    font-size: 13px;
+    margin: 35px 0 38px 0;
+    text-align: center;
+}
+
+.form-form .form-form-wrap form .social { text-align: center; }
+
+.form-form .form-form-wrap form .social a {
+    background: transparent;
+    border: 1px solid #e0e6ed;
+    box-shadow: none;
+    padding: 12px 10px;
+    width: 181px;
+}
+
+.form-form .form-form-wrap form .social a.social-fb { margin-right: 15px; }
+
+.form-form .form-form-wrap form .social a.social-fb svg, .form-form .form-form-wrap form .social a.social-fb .brand-name { color: #1b55e2; }
+
+@media (max-width: 991px) {
+    .form-form { width: 100%; }
+
+    .form-form .form-form-wrap {
+        margin: 0 auto;
+        min-width: auto;
+    }
+
+    .form-form .form-container .form-content { border-radius: 15px; }
+}
+
+@media (max-width: 575px) {
+    .form-form .form-form-wrap form .field-wrapper.toggle-pass { margin-bottom: 28px; }
+
+    .form-form .form-form-wrap form .social a.social-fb, .form-form .form-form-wrap form .social a.social-github {
+        display: block;
+        margin-bottom: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .form-form .form-form-wrap { width: 100%; }
+
+    .form-form .form-container { height: 100%; }
+}
+
+@supports (-ms-ime-align: auto) { .form-form .form-form-wrap { height: 100%; } }
